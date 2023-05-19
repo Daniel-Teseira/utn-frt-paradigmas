@@ -1,0 +1,95 @@
+<html>
+<h1>Hola alumnos de Paradigmas de Programación</h1>
+
+<script>
+
+    // declaracion de funcion imperativa pura
+    function suma(a,b){
+        return a + b
+    }
+
+    document.write("Suma a + b : " + suma(2,3))
+
+    var a = 10
+    // funcion imperativa impura
+    function fimpura(x){
+        a++
+        return a + x
+    }
+
+    document.write("<br>fimpura : " + fimpura(3))
+    document.write("<br>fimpura : " + fimpura(3))
+
+    // factorial con funcion imperativa pura
+    function fac(n){
+        total = 1
+        for(i=1; i<=n; i++){
+            total += total * i
+        }
+        return total
+    }
+
+    // factorial con funcion imperativa pura de gran similitud a declarativo
+    function factorial(n){
+        return (n > 0) ? n * factorial(n - 1) : 1
+    }
+
+// funciones para manejo de listas, imperativas tipo declarativo
+    // devuelve la cabecera, primer elemento
+    function head(xs){
+        return (xs.length) ? xs[0] : []
+    }
+
+    // devuelve la cola de la lista o sea todos los elemento exepto el primero
+    function tail(xs){
+        return (xs.length) ? xs.slice(1) : []
+    }
+
+    // suma los elemento de una lista numerica
+    function sumarLista(xs){
+        return (xs.length) ? head(xs) + sumarLista(tail(xs)) : 0
+    }
+
+    // cuenta cuantos elementos tiene una lista
+    function contarLista(xs){
+        return (! xs.length) ? 0 : 1 + contarLista(tail(xs))
+    }
+
+    // devuelve los numeros pares de una lista
+    function filtrarPares(xs){
+        return (! xs.length) ? [] : 
+               (head(xs) %2 == 0) ? [head(xs), filtrarPares(tail(xs))] : filtrarPares(tail(xs))
+    }
+
+    // funcional en js
+    var v1 = x => x + 1
+    var v2 = (x => x * x) (4)
+    var lista = [1,2,3,4,5,6]
+    var lista2 = lista.map(x => factorial(x))
+    var lista3 = lista.filter(x => x %2 == 0)
+    var lista4 = lista.filter(x => x %2 == 0).map(x => x * x)
+
+    // llamado de funciones y salida por la web
+    document.write("<br> Factorial : " + factorial(3))
+    document.write("<br> v1 : " + v1(6))
+    document.write("<br> v2 : " + v2)
+    document.write("<br> lista : " + lista)
+    document.write("<br> lista2 : " + lista2)
+    document.write("<br> lista3 : " + lista3)
+    document.write("<br> lista4 : " + lista4)
+    document.write("<br> sumarLista : " + sumarLista(lista))
+    document.write("<br> contarLista : " + contarLista(lista))
+    document.write("<br> filtrarPares : " + filtrarPares(lista))
+
+    lista.forEach(elemento => {
+        document.write("<br> Elemento : " + elemento)
+    })
+
+    function logArrayElements(element, index, array) {
+        document.write("<br>lista[" + index + "] = " + element + " "+ array)
+    }
+
+    lista.forEach(logArrayElements)
+
+</script>
+</html>
